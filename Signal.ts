@@ -21,7 +21,17 @@ class Signal {
     	var N:number = this.list.length;
     	for( var i:number = 0; i < N; i++) {
     		var h = this.list[i];
-    		h.apply(null, args);
+    		if (args.length == 0) {
+    			h();
+    		} else if (args.length == 1) {
+    			h(args[0]);
+    		} else if (args.legnth == 2) {
+    			h(args[0], args[1]);
+    		} else if (args.length == 3) {
+    			h(args[0], args[1], args[2]);
+    		} else {
+    			h.apply(null, args);
+    		}
     	}
 	}
 }
