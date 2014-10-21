@@ -1,7 +1,7 @@
 class Signal {
-    list:any[] = [];
-    constructor() {}
-    add(handler: (...args:any[]) => void):void {
+    private list:any[] = [];
+    public constructor() {}
+    public add(handler: (...args:any[]) => void):void {
     	
     	if (this.list.length <= 0) {
     		this.list.push(handler);
@@ -17,7 +17,7 @@ class Signal {
     	}
     	this.list.push(handler);
     }
-    dispatch(...args:any[]):void {
+    public dispatch(...args:any[]):void {
     	var N:number = this.list.length;
     	for( var i:number = 0; i < N; i++) {
     		var h = this.list[i];
@@ -25,7 +25,7 @@ class Signal {
     			h();
     		} else if (args.length == 1) {
     			h(args[0]);
-    		} else if (args.legnth == 2) {
+    		} else if (args.length == 2) {
     			h(args[0], args[1]);
     		} else if (args.length == 3) {
     			h(args[0], args[1], args[2]);
